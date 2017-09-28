@@ -2,7 +2,7 @@
 Configuration for docs
 """
 
-# source_link = "https://github.com/[org_name]/sc_custom_erpnext"
+# source_link = "https://github.com/unknownTH/sc_custom_erpnext"
 # docs_base_url = "https://[org_name].github.io/sc_custom_erpnext"
 # headline = "App that does everything"
 # sub_heading = "Yes, you got that right the first time, everything"
