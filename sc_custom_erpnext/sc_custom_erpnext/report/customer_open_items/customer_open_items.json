@@ -7,7 +7,7 @@
  "doctype": "Report", 
  "idx": 0, 
  "is_standard": "Yes", 
- "modified": "2017-08-26 12:34:05.697201", 
+ "modified": "2017-09-29 14:05:12.968902", 
  "modified_by": "Administrator", 
  "module": "SC Custom ERPNext", 
  "name": "Customer Open Items", 
@@ -18,6 +18,21 @@
  "roles": [
   {
    "role": "Administrator"
+  }, 
+  {
+   "role": "Accounts Manager"
+  }, 
+  {
+   "role": "Accounts User"
+  }, 
+  {
+   "role": "Sales Manager"
+  }, 
+  {
+   "role": "Sales Master Manager"
+  }, 
+  {
+   "role": "Sales User"
   }
  ]
 }
