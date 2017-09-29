@@ -10,6 +10,7 @@ app_icon = "octicon octicon-gear"
 app_color = "grey"
 app_email = "unknown"
 app_license = "GNU General Public License"
+hide_in_installer = True
 
 # Includes in <head>
 # ------------------
