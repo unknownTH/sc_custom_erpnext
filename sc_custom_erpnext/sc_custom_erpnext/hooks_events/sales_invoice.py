@@ -14,11 +14,11 @@ def on_submit(doc,method):
 		""", {"parent":doc.name}, as_dict=True)
 		
 	for sales_order in sales_orders:
-		update_sales_order_per_billed(sales_order.sales_order)
+		update_sales_order_status(sales_order.sales_order)
 		
 	return None
 
-def update_sales_order_per_billed(so_name):	
+def update_sales_order_status(so_name):	
 	billed_amount = 0
 	returned_amount = 0
 	
@@ -41,5 +41,20 @@ def update_sales_order_per_billed(so_name):
 		SET per_billed = %(per_billed)s
 		WHERE name = %(name)s
 		""", {"per_billed":per_billed, "name":so_name})
+	
+	per_delivered = frappe.db.get_value("Sales Order", {"name":so_name}, "per_delivered")
+		
+	if per_billed == 100 and per_delivered < 100:
+		frappe.db.sql("""
+		UPDATE `tabSales Order`
+		SET status = 'To Deliver', billing_status = 'Fully Billed'
+		WHERE name = %(name)s
+		""", {"name":so_name})
+	elif per_billed == 100 and per_delivered == 100:
+		frappe.db.sql("""
+		UPDATE `tabSales Order`
+		SET status = 'Completed', billing_status = 'Fully Billed'
+		WHERE name = %(name)s
+		""", {"name":so_name})
 	
 	return None
