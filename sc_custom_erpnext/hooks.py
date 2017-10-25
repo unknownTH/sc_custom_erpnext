@@ -80,13 +80,14 @@ hide_in_installer = True
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-#	}
-# }
+doc_events = {
+ 	"Sales Invoice": {
+		"on_submit": "sc_custom_erpnext.sc_custom_erpnext.hooks_events.sales_invoice.on_submit"
+	},	
+	"Delivery Note": {
+		"on_submit": "sc_custom_erpnext.sc_custom_erpnext.hooks_events.delivery_note.on_submit"
+	}
+}
 
 # Scheduled Tasks
 # ---------------
