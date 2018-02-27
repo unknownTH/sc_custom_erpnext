@@ -7,7 +7,7 @@ from frappe import _
 
 def execute(filters=None):
 	columns = get_columns()
-	data = get_customer_open_items_per_sales_orde(filters)
+	data = get_customer_open_items_per_sales_order(filters)
 	return columns, data
 
 def get_columns():
