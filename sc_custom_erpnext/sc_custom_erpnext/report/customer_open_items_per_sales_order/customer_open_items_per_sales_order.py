@@ -7,7 +7,7 @@ from frappe import _
 
 def execute(filters=None):
 	columns = get_columns()
-	data = get_customer_open_items(filters)
+	data = get_customer_open_items_per_sales_orde(filters)
 	return columns, data
 
 def get_columns():
@@ -15,14 +15,14 @@ def get_columns():
 			_("Item") + ":Link/Item:120",
 			_("Qty") + ":Int:50",
 			_("Rate") + ":Currency:100",
-			_("Sales Order") + ":Link/Item:120"
+			_("Sales Order") + ":Link/Sales Order:120"
 	]		
 
-def get_customer_open_items(filters):
+def get_customer_open_items_per_sales_order(filters):
 	data = frappe.db.sql("""
 		SELECT
 			`tabSales Order Item`.item_code, 
-			(`tabSales Order Item`.qty - `tabSales Order Item`.returned_qty) * `tabSales Order Item`.rate - `tabSales Order Item`.billed_amt) / `tabSales Order Item`.rate AS open_qty,
+			((`tabSales Order Item`.qty - `tabSales Order Item`.returned_qty) * `tabSales Order Item`.rate - `tabSales Order Item`.billed_amt) / `tabSales Order Item`.rate AS open_qty,
 			`tabSales Order Item`.rate,
 			`tabSales Order Item`.parent
 		FROM 
