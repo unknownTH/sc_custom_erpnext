@@ -32,8 +32,6 @@ def get_customer_open_items_per_sales_order(filters):
 		WHERE 
 			`tabSales Order`.customer = '{0}'
 			AND `tabSales Order`.status = 'To Bill'
-		GROUP BY 
-			`tabSales Order Item`.item_name
 		""".format(filters.customer))
 	
 	return data
