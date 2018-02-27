@@ -2,7 +2,7 @@
 // For license information, please see license.txt
 /* eslint-disable */
 
-frappe.query_reports["Customer Open Items"] = {
+frappe.query_reports["Customer Open Items per Sales Order"] = {
 	"filters": [
         {
             "fieldname":"customer",
