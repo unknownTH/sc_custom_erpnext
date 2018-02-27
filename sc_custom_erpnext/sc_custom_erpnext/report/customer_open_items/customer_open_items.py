@@ -12,7 +12,7 @@ def execute(filters=None):
 
 def get_columns():
 	return [
-			_("Item") + ":Link/Item:120",
+			_("Item") + ":Link/Item:350",
 			_("Qty") + ":Int:50",
 			_("Rate") + ":Currency:100",
 			_("Amount") + ":Currency:100"
