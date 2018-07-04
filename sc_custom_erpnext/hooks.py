@@ -11,6 +11,11 @@ app_color = "grey"
 app_email = "unknown"
 app_license = "GNU General Public License"
 hide_in_installer = True
+fixtures = [
+	{"dt":"Custom Field", "filters": [["Fieldname", "in", ("is_consignment_trasaction")]]},
+	"Custom Script",
+	{"dt":"Print Format", "filters": [["Module", "in", ("SC Custom ERPNext")]]}
+]
 
 # Includes in <head>
 # ------------------

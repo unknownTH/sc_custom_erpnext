@@ -1,0 +1,11 @@
+[
+ {
+  "docstatus": 0, 
+  "doctype": "Custom Script", 
+  "dt": "Customer", 
+  "modified": "2018-02-27 15:17:25.848532", 
+  "name": "Customer-Client", 
+  "script": "frappe.ui.form.on(\"Customer\", \"refresh\", function(frm) {\r\n\tfrm.add_custom_button(__('Open Items'), function() {\r\n\t\t\t\tfrappe.set_route('query-report', 'Customer Open Items', {customer:frm.doc.name});\r\n\t});\r\n\tfrm.add_custom_button(__('Return Open Items'), function() {\r\n\t\t\t\tfrappe.set_route('query-report', 'Customer Open Items per Sales Order', {customer:frm.doc.name});\r\n\t});\r\n});", 
+  "script_type": "Client"
+ }
+]

@@ -12,7 +12,7 @@ def execute(filters=None):
 
 def get_columns():
 	return [
-			_("Item") + ":Link/Item:120",
+			_("Item") + ":Link/Item:300",
 			_("Qty") + ":Int:50",
 			_("Rate") + ":Currency:100",
 			_("Sales Order") + ":Link/Sales Order:120"
@@ -32,8 +32,6 @@ def get_customer_open_items_per_sales_order(filters):
 		WHERE 
 			`tabSales Order`.customer = '{0}'
 			AND `tabSales Order`.status = 'To Bill'
-		GROUP BY 
-			`tabSales Order Item`.item_name
 		""".format(filters.customer))
 	
 	return data
