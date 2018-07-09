@@ -12,7 +12,7 @@ app_email = "unknown"
 app_license = "GNU General Public License"
 hide_in_installer = True
 fixtures = [
-	{"dt":"Custom Field", "filters": [["Fieldname", "in", ("is_consignment_trasaction")]]},
+	{"dt":"Custom Field", "filters": [["Fieldname", "in", ("is_consignment_transaction")]]},
 	"Custom Script",
 	{"dt":"Print Format", "filters": [["Module", "in", ("SC Custom ERPNext")]]}
 ]
@@ -87,10 +87,14 @@ fixtures = [
 
 doc_events = {
  	"Sales Invoice": {
-		"on_submit": "sc_custom_erpnext.sc_custom_erpnext.hooks_events.sales_invoice.on_submit"
+		"validate": "sc_custom_erpnext.sc_custom_erpnext.controllers.sales_invoice.validate",
+		"on_submit": "sc_custom_erpnext.sc_custom_erpnext.controllers.sales_invoice.on_submit",
+		"on_cancel": "sc_custom_erpnext.sc_custom_erpnext.controllers.sales_invoice.on_cancel"
 	},	
 	"Delivery Note": {
-		"on_submit": "sc_custom_erpnext.sc_custom_erpnext.hooks_events.delivery_note.on_submit"
+		"validate": "sc_custom_erpnext.sc_custom_erpnext.controllers.delivery_note.validate",
+		"on_submit": "sc_custom_erpnext.sc_custom_erpnext.controllers.delivery_note.on_submit",
+		"on_cancel": "sc_custom_erpnext.sc_custom_erpnext.controllers.delivery_note.on_cancel"
 	}
 }
 

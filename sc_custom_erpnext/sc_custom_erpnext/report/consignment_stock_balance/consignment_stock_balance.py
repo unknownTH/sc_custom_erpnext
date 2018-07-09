@@ -13,7 +13,6 @@ def execute(filters=None):
 
 def get_columns():
 	return [
-			_("Customer") + ":Link/Customer:120",
 			_("Item") + ":Link/Item:200",
 			_("Qty") + ":Int:50",
 			_("Rate") + ":Currency:100",
@@ -23,7 +22,7 @@ def get_columns():
 def get_consignment_stock_ledger_entries(filters):
 	data = frappe.db.sql("""
 		SELECT
-			customer, item_code, SUM(qty), SUM(rate), SUM(amount)
+			item_code, SUM(qty), rate, SUM(qty) * rate AS amount
 		FROM 
 			`tabConsignment Stock Ledger Entry` 
 		WHERE 

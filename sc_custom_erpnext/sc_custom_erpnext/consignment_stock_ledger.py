@@ -11,10 +11,15 @@ import frappe
 # _exceptions = []
 
 
-def validate_negative_stock(voucher):
+def validate_negative_stock(voucher, reverse_qty=False):
 	csl_entries = voucher.get("items")
 	for item in csl_entries:
-		csl_qty_after_transaction = get_consignment_stock_ledger_balance(item, voucher) + item.qty
+		if reverse_qty == True:
+			item.quantity = item.qty * -1
+		else:
+			item.quantity = item.qty
+		
+		csl_qty_after_transaction = get_consignment_stock_ledger_balance(item, voucher) + item.quantity
 		
 		if csl_qty_after_transaction < 0:
 			# negative stock!
@@ -32,14 +37,28 @@ def get_consignment_stock_ledger_balance(item, voucher):
 		GROUP BY
 			item_code
 		""".format(voucher.customer, item.item_code))
-	return int(data[0][0])
+	
+	if data: 
+		data = int(data[0][0])
+	else:
+		data = 0
+		
+	return data
 			
 
-def make_consignment_stock_ledger_entries(voucher):
+def make_consignment_stock_ledger_entries(voucher, remark=False, reverse_qty=False):
 	csl_entries = voucher.get("items")
 	
+	if remark == False:
+		voucher.remark = ""
+	
 	for item in csl_entries:
-			make_consignment_stock_ledger_entry(item, voucher)
+		if reverse_qty == True:
+			item.quantity = item.qty * -1
+		else:
+			item.quantity = item.qty
+	
+		make_consignment_stock_ledger_entry(item, voucher)
 			
 			
 def make_consignment_stock_ledger_entry(item, voucher):
@@ -52,7 +71,7 @@ def make_consignment_stock_ledger_entry(item, voucher):
 		"voucher_no": voucher.name,
 		"company": voucher.company,
 		"customer": voucher.customer,
-		"qty": item.qty,
+		"qty": item.quantity,
 		"rate": item.rate,
 		"amount": item.amount,
 		"currency": voucher.currency,

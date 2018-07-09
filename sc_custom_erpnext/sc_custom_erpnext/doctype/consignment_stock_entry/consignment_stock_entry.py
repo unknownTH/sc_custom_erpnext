@@ -16,8 +16,21 @@ class ConsignmentStockEntry(Document):
 
 		
 	def on_submit(self):
-		make_consignment_stock_ledger_entries(self)
+		make_consignment_stock_ledger_entries(self, remark=True)
 		
 	
 	def on_cancel(self):
 		delete_related_consignment_stock_ledger_entries(self)
+
+
+@frappe.whitelist()
+def get_open_count(customer):
+	total_count = len(frappe.get_all("Consignment Stock Entry", filters={"customer": customer}, fields=['name']))
+	open_count = len(frappe.get_all("Consignment Stock Entry", filters={"customer": customer, "docstatus": 0}, fields=['name']))
+	
+	out = {
+		'total_count': total_count,
+		'open_count': open_count
+	}
+	
+	return out
