@@ -21,7 +21,7 @@ fixtures = [
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/sc_custom_erpnext/css/sc_custom_erpnext.css"
+app_include_css = "/assets/sc_custom_erpnext/css/desk.css"
 # app_include_js = "/assets/sc_custom_erpnext/js/sc_custom_erpnext.js"
 
 # include js, css files in header of web template

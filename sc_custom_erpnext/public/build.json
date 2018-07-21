@@ -1,0 +1,5 @@
+{
+    "sc_custom_erpnext/css/desk.css": [
+		"public/css/desk.css"
+	]
+}
