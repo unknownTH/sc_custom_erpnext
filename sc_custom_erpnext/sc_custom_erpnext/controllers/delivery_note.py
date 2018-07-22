@@ -18,9 +18,9 @@ def on_submit(doc,method):
 	if doc.is_consignment_transaction == 1: 
 		make_consignment_stock_ledger_entries(doc)
 	
-	frappe.db.set(doc, "status", "Closed")
+		frappe.db.set(doc, "status", "Closed")
 		
-	update_related_sales_order_status(doc)
+		update_related_sales_order_status(doc)
 	
 		
 def on_cancel(doc,method):
