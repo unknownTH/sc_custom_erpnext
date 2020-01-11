@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_import": 1,
- "autoname": "CSE.#####",
+ "autoname": "ACC-CSE.#####",
  "creation": "2018-06-24 10:55:27.105537",
  "doctype": "DocType",
  "document_type": "Document",
@@ -363,7 +363,7 @@
  "icon": "fa fa-truck",
  "is_submittable": 1,
  "links": [],
- "modified": "2020-01-11 21:06:33.222190",
+ "modified": "2020-01-11 21:40:43.602792",
  "modified_by": "Administrator",
  "module": "SC Custom ERPNext",
  "name": "Consignment Stock Entry",
