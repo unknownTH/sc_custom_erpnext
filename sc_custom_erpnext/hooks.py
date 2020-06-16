@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 from __future__ import unicode_literals
 from . import __version__ as app_version
 
@@ -8,20 +9,17 @@ app_publisher = "unknownTH"
 app_description = "ERPNext customisations for Sora Choi"
 app_icon = "octicon octicon-gear"
 app_color = "grey"
-app_email = "unknown"
-app_license = "GNU General Public License"
+app_email = ""
+app_license = "GNU GPL v3.0"
 hide_in_installer = True
-fixtures = [
-	{"dt":"Custom Field", "filters": [["Fieldname", "in", ("is_consignment_transaction")]]},
-	"Custom Script",
-	{"dt":"Print Format", "filters": [["Module", "in", ("SC Custom ERPNext")]]}
-]
+
+# fixtures = ["Custom Field", "Custom Script"]
 
 # Includes in <head>
 # ------------------
 
 # include js, css files in header of desk.html
-app_include_css = "/assets/sc_custom_erpnext/css/desk.css"
+# app_include_css = "/assets/erpnext_magento/css/erpnext_magento.css"
 # app_include_js = "/assets/sc_custom_erpnext/js/sc_custom_erpnext.js"
 
 # include js, css files in header of web template
@@ -36,6 +34,10 @@ app_include_css = "/assets/sc_custom_erpnext/css/desk.css"
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
+
+doctype_js = {
+	"Customer": "public/js/doctype_js/customer.js"
+}
 
 # Home Pages
 # ----------
