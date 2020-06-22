@@ -36,7 +36,8 @@ hide_in_installer = True
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
 doctype_js = {
-	"Customer": "public/js/doctype_js/customer.js"
+	"Customer": "public/js/doctype_js/customer.js",
+	"Item": "public/js/doctype_js/item.js"
 }
 
 # Home Pages
