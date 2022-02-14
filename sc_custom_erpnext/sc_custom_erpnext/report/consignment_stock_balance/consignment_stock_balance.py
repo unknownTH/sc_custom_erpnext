@@ -13,22 +13,23 @@ def execute(filters=None):
 
 def get_columns():
 	return [
-			_("Item") + ":Link/Item:200",
+			_("Item") + ":Link/Item:300",
 			_("Qty") + ":Int:50",
-			_("Rate") + ":Currency:100",
-			_("Amount") + ":Currency:100"
+			_("Selling Price") + ":Currency:200"
 	]		
 
 def get_consignment_stock_ledger_entries(filters):
-	data = frappe.db.sql("""
+	data = frappe.db.sql(f"""
 		SELECT
-			item_code, SUM(qty), rate, SUM(qty) * rate AS amount
+			csle.item_code, SUM(csle.qty), ip.price_list_rate AS selling_price
 		FROM 
-			`tabConsignment Stock Ledger Entry` 
+			`tabConsignment Stock Ledger Entry` AS csle
+		LEFT JOIN 
+			`tabItem Price` AS ip ON csle.item_code = ip.item_code 
 		WHERE 
-			customer = '{0}'
+			csle.customer = '{filters.customer}'
 		GROUP BY
 			item_code
-		""".format(filters.customer))
+		""")
 	
 	return data
